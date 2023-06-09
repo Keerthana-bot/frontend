@@ -20,4 +20,9 @@ const API = {
   delete: (url, data = null) => api.delete(url, { data }),
 };
 
+API.interceptors.response.use(
+  (response) => response,
+  (error) => Promise.reject((error.response && error.response.data && error.response.data.message) || 'Something went wrong')
+);
+
 export default API;
