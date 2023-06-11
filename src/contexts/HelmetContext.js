@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
-const helmetContext = createContext("");
+export const HelmetContext = createContext("");
 
-export const HelmetProvider = ({ children }) => {
+export default function HelmetProvider({ children }) {
   const [focus, setFocus] = useState(true);
   const [title, setTitle] = useState("KEERTHANA");
   const [description, setDescription] = useState("KEERTHANA");
@@ -42,6 +42,3 @@ export const HelmetProvider = ({ children }) => {
   );
 };
 
-export function useHelmet() {
- return useContext(helmetContext);
-}

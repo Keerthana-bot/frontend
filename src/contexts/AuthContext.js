@@ -9,9 +9,10 @@ import {
 import API from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import Toast from "../Toast";
-const AuthContext = createContext({});
 
-export function AuthProvider({ children }) {
+export const AuthContext = createContext({});
+
+export default function AuthProvider({ children }) {
 	const navigate = useNavigate();
 	const { enqueueSnackbar } = useSnackbar();
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -53,8 +54,4 @@ export function AuthProvider({ children }) {
 			{children}
 		</AuthContext.Provider>
 	);
-}
-
-export function useAuth() {
-	return useContext(AuthContext);
 }

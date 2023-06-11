@@ -3,9 +3,9 @@ import React, {  useContext, createContext, useEffect } from "react";
 
 import { socket } from "../utils/socket";
 
-const SocketContext = createContext("");
+export const SocketContext = createContext("");
 
-export function SocketProvider({ children }) {
+export default function SocketProvider({ children }) {
   useEffect(() => {
     socket.emit("hehe");
     socket.emit("userOnline", {
@@ -22,8 +22,4 @@ export function SocketProvider({ children }) {
       {children}
     </SocketContext.Provider>
   );
-}
-
-export function useSocket() {
-  return useContext(SocketContext);
 }

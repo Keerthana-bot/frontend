@@ -13,11 +13,12 @@ if (token) {
   api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 
-const API = {
-  post: (url, data) => api.post(url, data),
-  put: (url, data) => api.put(url, data),
-  get: (url, data = null) => api.get(url, { params: data }),
-  delete: (url, data = null) => api.delete(url, { data }),
-};
+api.interceptors.response.use(
+  (response) => response,
+  (error) =>
+    Promise.reject(
+      (error.response && error.response.data) || "Something went wrong"
+    )
+);
 
-export default API;
+export default api;
